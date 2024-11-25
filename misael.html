@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botón para mostrar imagen</title>
+    <style>
+        
+
+        .god_button {
+            background-color: rgb(34, 139, 34);
+            color: white;
+            border: none;
+            height: 36px;
+            width: 180px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        #god_image {
+            display: none; /* Oculta la imagen inicialmente */
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+  
+    <button class="god_button" onclick="showImage()">PRESIONA PARA VER LA CARA DE DIOS</button>
+    <img id="god_image" src="misael.webp" alt="Prueba de imagen">
+    <script>
+        function showImage() {
+            const image = document.getElementById('god_image');
+            image.style.display = 'block'; // Cambia la propiedad de visualización para mostrar la imagen
+        }
+    </script>
+</body>
+</html>
