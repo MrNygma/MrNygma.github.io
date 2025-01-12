@@ -30,12 +30,25 @@ a {
   color: white;
 }
 
+.cajaLogo {
+  grid-column: 2/ span 4;
+  display: flex;
+  align-items: center;
+}
+
+
+
+.logo {
+  height: 3rem;
+}
+
 .textoTopBox {
   font-size: 1.25rem;
-  grid-column: 10/15;
+  grid-column: 9/14;
   display: flex;
   gap: 1.5rem;
   align-items: center;
+  justify-content: flex-end;
 }
 
 .cajaImagen {
@@ -138,7 +151,7 @@ a {
 
 #nuestrosServicios {
   grid-row: 13 / span 1;
-  grid-column: 2/span 4;
+  grid-column: 2/span 5;
 }
 
 html,
@@ -153,19 +166,19 @@ body {
   gap: 1rem;
   grid-row: 14/ span 8;
   grid-column: 2/span 12;
-  justify-content: center;
-  /* Para centrar los elementos */
+  justify-content: space-between;
+  /* Changed from center to space-between */
 }
 
 .cajaServicioIndividual {
   height: 20.1875rem;
-  width: 25.5rem;
+  width: calc(33.33% - 0.67rem);
+  /* Changed from fixed width to responsive */
   background-color: #4A41FF;
   border-radius: 1.25rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  /* Elimina el flex: 0 0 calc(33.33% - 20px) ya que queremos mantener el ancho fijo */
 }
 
 .imagenServicio {
@@ -223,7 +236,7 @@ body {
   align-items: center;
   justify-content: center;
   grid-row: 28/span 1;
-  grid-column: 6 / span 4;
+  grid-column: 1 / span 14;
 }
 
 
@@ -350,7 +363,58 @@ body {
   color: #6861FC;
 }
 
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  padding: 10px;
+}
 
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 5px 0;
+  transition: 0.4s;
+}
+
+/* Estilos para la barra lateral */
+.sidebar {
+  position: fixed;
+  right: -250px;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #3D34F0;
+  transition: 0.4s;
+  z-index: 1000;
+}
+
+.sidebar.active {
+  right: 0;
+}
+
+.close-btn {
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.sidebar-content {
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-content a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+}
 
 @media (max-width: 1071px) {
   .textoHeader {
@@ -380,6 +444,31 @@ body {
     display: flex;
   }
 
+  .textoTopBox {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: block;
+    /* Mostrar el menú hamburguesa */
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .hamburger-menu.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-menu.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+
   .cajaImagen {
     grid-column: span 1;
     grid-row: 2/ span 4;
@@ -400,7 +489,7 @@ body {
   }
 
   .botonContactanos {
-    width: 20.625rem;
+    width: 90%;
   }
 
   .textoNosotros {
@@ -414,9 +503,11 @@ body {
 
   .botonContacto {
     grid-row: 10;
-    width: 20.625rem;
+    width: 90%;
     display: flex;
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .cajaImagenNosotros {
@@ -424,6 +515,10 @@ body {
     justify-content: center;
     grid-row: 11/span 3;
     width: 100%;
+  }
+
+  .titulosSeccion {
+    font-size: 2rem;
   }
 
   .imagenNosotros {
@@ -447,6 +542,11 @@ body {
     grid-row: 15 / span 24;
   }
 
+  .cajaServicioIndividual {
+    width: 20.5rem;
+    /* Reset to your original fixed width */
+  }
+
   #trabajosPrevios {
     grid-row: 41 /span 5;
     display: flex;
@@ -455,90 +555,155 @@ body {
     width: 100%;
   }
 
-#contactanos
-{
-  grid-row: 46 / span 1;
-}
-
-#telefono1
-{
-  grid-row: 47 / span 1;
-}
-
-#correo1
-{
-  grid-row: 48 / span 1;
-}
-
-#correo2
-{
-  grid-row: 49 / span 1;
-}
-
-#direccion
-{
-  grid-row: 50 / span 1;
-}
-
-#formNombre
-{
-  grid-row: 51 / span 1;
-}
-
-#formCorreo
-{
-  grid-row: 52 / span 1;
-}
-
-#formMensaje
-{
-  grid-row: 53 / span 2;
-}
-
-
-
-#botonEnviar{
-  grid-row: 55;
-  width: 90%;
-}
-
-
-
-.footer
-{
-  grid-row: 56 / span 5;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-
-
-
-}
-
-
-/* Mantén tu media query existente pero actualízala así */
-@media (max-width: 1200px) {
   .carouselImagenes {
+    height: 25.56rem;
     width: 90%;
-    height: 25.56rem;
-    /* Mantener altura fija */
+
   }
 
-  .carouselImagenes .carousel-item {
-    height: 25.56rem;
+  #contactanos {
+    grid-row: 46 / span 1;
   }
+
+  .textoContacto {
+    font-size: 1rem;
+
+  }
+
+  #telefono1 {
+    grid-row: 47 / span 1;
+    gap: 1rem;
+  }
+
+  #correo1 {
+    grid-row: 48 / span 1;
+    gap: 1rem;
+  }
+
+  #correo2 {
+    grid-row: 49 / span 1;
+    gap: 1rem;
+  }
+
+  #direccion {
+    grid-row: 50 / span 1;
+    gap: 1rem;
+  }
+
+  [id*="form"] {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+
+  #formNombre {
+    grid-row: 51 / span 1;
+  }
+
+  #formCorreo {
+    grid-row: 52 / span 1;
+  }
+
+  #formMensaje {
+    grid-row: 53 / span 2;
+  }
+
+
+
+  #botonEnviar {
+    grid-row: 55;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer {
+    grid-row: 56 / span 5;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #siguenos {
+    align-items: center;
+  }
+
+  #llamanos {
+    align-items: center;
+  }
+
 }
 
-@media (max-width: 768px) {
-  .carouselImagenes {
-    height: 20rem;
-    /* Altura más pequeña para móviles */
+
+@media (max-width: 1000px) and (min-width: 621px) {
+
+  .mainBox {
+    max-height: 213.5rem;
+    grid-template-rows: repeat(40, 1fr);
   }
 
-  .carouselImagenes .carousel-item {
-    height: 20rem;
+  .cajaServicioIndividual {
+    width: calc(50% - 0.5rem);
   }
+
+  #trabajosPrevios {
+    grid-row: 28;
+
+  }
+
+  #contactanos {
+    grid-row: 29;
+  }
+
+  #telefono1 {
+    grid-row: 30;
+  }
+
+  #correo1 {
+    grid-row: 31 ;
+  }
+
+  #correo2 {
+    grid-row: 32;
+  }
+
+  #direccion {
+    grid-row: 33;
+ 
+  }
+
+  [id*="form"] {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #formNombre {
+    grid-row: 30;
+  }
+
+  #formCorreo {
+    grid-row: 31;
+  }
+
+  #formMensaje {
+    grid-row: 32/span 3;
+  }
+
+  #botonEnviar {
+    grid-row: 35;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer {
+    grid-row: 40;
+  }
+
+
+
 }
